@@ -3,35 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="node_modules/vue/dist/vue.min.js"></script>
-    <script src="./button.js"></script>
 </head>
 <style>
     * {box-sizing: border-box; margin: 0; padding: 0}
     :root {
-        --button-font-size: 14px
+        --button-font-size: 14px;
+        --button-bg: #ffffff;
+        --button-hover-bg: #eeeeee;
+        --button-border-color: #999;
+        --button-border-hover-color: #666666;
     }
 </style>
 <style>
-    .d-button {
-        font-size: var(--button-font-size);
-    }
     #app {
         margin: 20px;
     }
 </style>
 <body>
-    <div id="app">
-        <d-button></d-button>
-    </div>
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                message: "hi"
-            }
-        })
-
-    </script>
+<div id='app'>
+    <d-button></d-button>
+</div>
+<script src="src/app.js"></script>
 </body>
 </html>
