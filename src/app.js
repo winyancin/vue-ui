@@ -6,5 +6,9 @@ Vue.component('d-button', Button)
 Vue.component('d-icon', Icon)
 
 new Vue({
-    el: "#app"
+    el: "#app",
+    data: {
+        loading1: false,
+        loading2: false
+    }
 })

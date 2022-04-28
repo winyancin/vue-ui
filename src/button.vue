@@ -1,6 +1,7 @@
 <template>
-  <button class="d-button" :class="{[`icon-${iconPosition}`]: true}">
-    <d-icon :name="icon" :class="{loading: icon === 'loading'}"></d-icon>
+  <button class="d-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+    <d-icon v-if="!loading" :name="icon"></d-icon>
+    <d-icon v-if="loading" name="loading" class="loading"></d-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -10,6 +11,7 @@
 <script>
 export default {
   props: {
+    loading: Boolean,
     icon: String,
     iconPosition: {
       type: String,
