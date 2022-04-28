@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/vexh/vue-ui/issues"
   },
-  "homepage": "https://github.com/vexh/vue-ui#readme"
+  "homepage": "https://github.com/vexh/vue-ui#readme",
+  "dependencies": {
+    "vue": "^2.6.14"
+  }
 }
