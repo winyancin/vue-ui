@@ -18,18 +18,30 @@
     #app {
         margin: 20px;
     }
+    section {
+        margin: 10px;
+    }
 </style>
 <body>
 <div id='app'>
-    <d-button>按钮</d-button>
-    <d-button :loading="loading1" icon="download" @click="loading1 = !loading1">下载</d-button>
-    <d-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">图标在右</d-button>
-    <d-button icon="loading">loading</d-button>
-    <d-button-group>
-        <d-button>按钮1</d-button>
-        <d-button>按钮2</d-button>
-        <d-button>按钮3</d-button>
-    </d-button-group>
+    <section>
+        <d-input value="abcabc"></d-input>
+        <d-input value="readonly" readonly></d-input>
+        <d-input value="disabled" disabled></d-input>
+        <d-input value="error" error="姓名不能为空"></d-input>
+    </section>
+    <section>
+        <d-button>按钮</d-button>
+        <d-button :loading="loading1" icon="download" @click="loading1 = !loading1">下载</d-button>
+        <d-button icon="settings" icon-position="right" :loading="loading2" @click="loading2 = !loading2">图标在右</d-button>
+        <d-button icon="loading">loading</d-button>
+        <d-button-group>
+            <d-button>按钮1</d-button>
+            <d-button>按钮2</d-button>
+            <d-button>按钮3</d-button>
+        </d-button-group>
+    </section>
+
 </div>
 <script src="src/app.js"></script>
 <script src="//at.alicdn.com/t/font_3365777_lwwitw9debk.js"></script>

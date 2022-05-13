@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/parcel index.html --no-cache"
+    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
+    "start": "./node_modules/.bin/parcel index.html --no-cache",
+    "dev-test": "parcel watch test/* --no-cache & karma start"
   },
   "repository": {
     "type": "git",
@@ -24,11 +25,21 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.3.0",
+    "chai": "^4.3.6",
+    "karma": "^6.3.19",
+    "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-mocha": "^2.0.1",
+    "karma-sinon-chai": "^2.0.2",
+    "mocha": "^9.2.2",
     "parcel-bundler": "^1.12.5",
     "sass": "^1.51.0",
+    "sinon": "^13.0.2",
+    "sinon-chai": "^3.7.0",
     "vue-template-compiler": "^2.6.14"
   },
   "alias": {
-    "vue" : "./node_modules/vue/dist/vue.common.js"
+    "vue": "./node_modules/vue/dist/vue.common.js"
   }
 }
