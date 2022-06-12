@@ -83,57 +83,57 @@ export default {
   $class-prefix: col-;
   @for $i from 1 through 24 {
     &.#{$class-prefix}#{$i} {
-      width: ($i/24) * 100%;
+      width: calc($i/24) * 100%;
     }
   }
   $class-prefix: offset-;
   @for $i from 1 through 24 {
     &.#{$class-prefix}#{$i} {
-      margin-left: ($i / 24) * 100%;
+      margin-left: calc($i / 24) * 100%;
     }
   }
 
-  @media (min-width: 577px) and (max-width: 768px) {
+  @media (min-width: 577px) {
     $class-prefix: col-ipad-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        width: ($i/24) * 100%;
+        width: calc($i/24) * 100%;
       }
     }
     $class-prefix: offset-ipad-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
+        margin-left: calc($i / 24) * 100%;
       }
     }
   }
 
-  @media (min-width: 769px) and (max-width: 992px) {
+  @media (min-width: 769px) {
     $class-prefix: col-narrowPc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        width: ($i/24) * 100%;
+        width: calc($i/24) * 100%;
       }
     }
     $class-prefix: offset-narrowPc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
+        margin-left: calc($i / 24) * 100%;
       }
     }
   }
 
-  @media (min-width: 993px) and (max-width: 1200px) {
+  @media (min-width: 993px) {
     $class-prefix: col-pc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        width: ($i/24) * 100%;
+        width: calc($i/24) * 100%;
       }
     }
     $class-prefix: offset-pc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
+        margin-left: calc($i / 24) * 100%;
       }
     }
   }
@@ -142,13 +142,13 @@ export default {
     $class-prefix: col-widePc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        width: ($i/24) * 100%;
+        width: calc($i/24) * 100%;
       }
     }
     $class-prefix: offset-widePc-;
     @for $i from 1 through 24 {
       &.#{$class-prefix}#{$i} {
-        margin-left: ($i / 24) * 100%;
+        margin-left: calc($i / 24) * 100%;
       }
     }
   }
