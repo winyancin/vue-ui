@@ -24,12 +24,14 @@
 </style>
 <body>
 <div id='app'>
-    <!-- <div style="border: 1px solid grey">
+    <div style="border: 1px solid grey">
         <d-row gutter="20">
-            <d-col>1</d-col>
-            <d-col>2</d-col>
+            <d-col span="24"  
+            :pc="{span: 2}" :wide-pc="{span: 1}">1</d-col>
+            <d-col span="24"  
+            :pc="{span: 22}" :wide-pc="{span: 23}">2</d-col>
         </d-row>
-        <d-row gutter="20">
+        <!-- <d-row gutter="20">
             <d-col>1</d-col>
             <d-col>2</d-col>
             <d-col>1</d-col>
@@ -40,7 +42,7 @@
             <d-col span="8" offset="2">2</d-col>
             <d-col>3</d-col>
             <d-col>4</d-col>
-        </d-row>
+        </d-row> -->
     </div>
     <section>
         <d-input value="abcabc" @change="inputChange"></d-input>
@@ -58,7 +60,7 @@
             <d-button>按钮2</d-button>
             <d-button>按钮3</d-button>
         </d-button-group>
-    </section> -->
+    </section>
 
 </div>
 <script src="src/app.js"></script>
