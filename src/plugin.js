@@ -6,7 +6,8 @@ export default {
       let Constructor = Vue.extend(Toast)
       let toast = new Constructor({
         propsData: {
-          closeButton: toastOptions.closeButton
+          closeButton: toastOptions.closeButton,
+          enableHtml:  toastOptions.enableHtml
         }
       })
       toast.$slots.default = [message];

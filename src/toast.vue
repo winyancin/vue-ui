@@ -1,7 +1,10 @@
 <template>
-  <div class="toast">
-    <slot></slot>
-    <div class="line" v-if="this.closeButton"></div>
+  <div class="toast" ref="wrapper">
+    <div class="message">
+      <slot v-if="!enableHtml"></slot>
+      <div v-if="enableHtml" v-html="$slots.default[0]"></div>
+    </div>
+    <div class="line" v-if="this.closeButton" ref="line"></div>
     <div class="close" @click="onClose" v-if="this.closeButton">{{ this.closeButton.text }}</div>
   </div>
 </template>
@@ -18,36 +21,39 @@ export default {
       type: Number,
       default: 3,
     },
-    closeButton:{
-      type: Object,
-      // default: () => {
-      //   return {
-      //     text: '关闭',
-      //     cb: () => {
-      //       console.log('on close click');
-      //     }
-      //   }
-      // }
-    }
+    closeButton: Object,
+    enableHtml: {
+      type: Boolean,
+      default: false,
+    },
   },
   mounted() {
-    if (this.autoClose) {
-      setTimeout(() => {
-        this.close();
-      }, this.autoCloseDelay * 1000);
-    }
+    this.excuteAutoClose();
+    this.updateStyles()
   },
   methods: {
+    excuteAutoClose() {
+      if (this.autoClose) {
+        setTimeout(() => {
+          this.close();
+        }, this.autoCloseDelay * 1000);
+      }
+    },
+    updateStyles() {
+      this.$nextTick(() => {
+        this.$refs.line.style.height = `${this.$refs.wrapper.getBoundingClientRect().height}px`;
+      });
+    },
     close() {
       this.$el.remove();
       this.$destroy();
     },
     onClose() {
       this.close();
-      if (typeof this.closeButton.cb === 'function') {
+      if (typeof this.closeButton.cb === "function") {
         this.closeButton.cb();
       }
-    }
+    },
   },
 };
 </script>
@@ -66,18 +72,22 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   font-size: $font-size;
   background-color: $toast-bg;
   line-height: 1.8;
-  height: $toast-height;
+  min-height: $toast-height;
   color: white;
   padding: 0 16px;
   border-radius: 4px;
-}
-.line {
-  border-left: 1px solid #666;
-  height: 100%;
-  margin-left: 16px;
-}
-.close {
-  margin-left: 16px;
-  cursor: pointer;
+  .message {
+    padding: 16px;
+  }
+  .line {
+    border-left: 1px solid #666;
+    height: 100%;
+    margin-left: 16px;
+  }
+  .close {
+    margin-left: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
 }
 </style>
