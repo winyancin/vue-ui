@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .content {
   border: 1px solid grey;
   flex-grow: 1;
