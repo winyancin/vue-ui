@@ -21,9 +21,23 @@
     section {
         margin: 10px;
     }
+    .layout {
+        height: 100vh;
+    }
+    .demo {
+        height: 100px;
+    }
 </style>
 <body>
 <div id='app'>
+    <d-layout>
+        <d-header class="demo">header</d-header>
+        <d-layout>
+            <d-sider>sider</d-sider>
+            <d-content>content</d-content>
+        </d-layout>
+        <d-footer class="demo">footer</d-footer>
+    </d-layout>
     <div style="border: 1px solid grey">
         <d-row>
            <d-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}"></d-col>
