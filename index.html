@@ -31,7 +31,9 @@
 <body>
 <div id='app'>
     <div class="box">
-        <d-button @click="showToast">toast</d-button>
+        <d-button @click="showToast('top')">toast top</d-button>
+        <d-button @click="showToast('bottom')">toast bottom</d-button>
+        <d-button @click="showToast('middle')">toast middle</d-button>
     </div>
     <!-- <d-layout>
         <d-header class="demo">header</d-header>

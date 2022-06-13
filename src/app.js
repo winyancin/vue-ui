@@ -33,23 +33,21 @@ new Vue({
     loading1: false,
     loading2: false,
   },
-  // created() {
-  //     this.$toast()
-  // },
+
   methods: {
     inputChange($event) {
       console.log($event);
     },
 
-    showToast() {
-      this.$toast('我是 加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字加粗文字', {
+    showToast(position) {
+      this.$toast('内容'+Math.random(10), {
         closeButton: {
-          text: "关闭关闭关闭关闭",
+          text: "关闭",
           cb: () => {
             console.log("closeTosssxxxast");
           },
         },
-        position: 'middle',
+        position,
         autoClose: false
       });
     },
