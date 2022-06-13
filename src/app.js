@@ -48,7 +48,9 @@ new Vue({
           cb: () => {
             console.log("closeTosssxxxast");
           },
-        }
+        },
+        position: 'middle',
+        autoClose: false
       });
     },
   },

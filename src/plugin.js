@@ -7,7 +7,11 @@ export default {
       let toast = new Constructor({
         propsData: {
           closeButton: toastOptions.closeButton,
-          enableHtml:  toastOptions.enableHtml
+          enableHtml:  toastOptions.enableHtml,
+          autoClose: toastOptions.autoClose,
+          autoCloseDelay: toastOptions.autoCloseDelay,
+          enableHtml: toastOptions.enableHtml,
+          position: toastOptions.position
         }
       })
       toast.$slots.default = [message];

@@ -1,5 +1,5 @@
 <template>
-  <div class="toast" ref="wrapper">
+  <div class="toast" ref="wrapper" :class="positionClasses">
     <div class="message">
       <slot v-if="!enableHtml"></slot>
       <div v-if="enableHtml" v-html="$slots.default[0]"></div>
@@ -26,6 +26,20 @@ export default {
       type: Boolean,
       default: false,
     },
+    position: {
+      type: String,
+      default: 'top',
+      validator: (value) => {
+        return ['top', 'bottom', 'middle'].includes(value)
+      }
+    }
+  },
+  computed: {
+    positionClasses() {
+      return {
+        [`position-${this.position}`]: true
+      }
+    }
   },
   mounted() {
     this.excuteAutoClose();
@@ -66,7 +80,6 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
   font-size: $font-size;
@@ -76,6 +89,15 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   color: white;
   padding: 0 16px;
   border-radius: 4px;
+  &.position-top {
+    top: 0;
+  }
+  &.position-bottom {
+    bottom: 0;
+  }
+  &.position-middle {
+    bottom: 50%;
+  }
   .message {
     padding: 16px;
   }
