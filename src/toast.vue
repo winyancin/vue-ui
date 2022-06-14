@@ -16,12 +16,11 @@ export default {
   name: "d-toast",
   props: {
     autoClose: {
-      type: Boolean,
+      type: [Boolean, Number],
       default: true,
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 3,
+      validator(value) {
+        return typeof value === 'boolean' || typeof value === 'number'
+      }
     },
     closeButton: Object,
     enableHtml: {
@@ -52,13 +51,13 @@ export default {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     updateStyles() {
-      this.$nextTick(() => {
-        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
-      });
+      // this.$nextTick(() => {
+      //   this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+      // });
     },
     close() {
       this.$el.remove();
