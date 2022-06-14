@@ -55,9 +55,9 @@ export default {
       }
     },
     updateStyles() {
-      // this.$nextTick(() => {
-      //   this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
-      // });
+      this.$nextTick(() => {
+        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+      });
     },
     close() {
       this.$el.remove();
