@@ -8,7 +8,6 @@
 export default {
   name: "button-group",
   mounted() {
-    console.log(this.$el);
     for (const child of this.$el.children) {
       const nodeName = child.nodeName.toLowerCase()
       if (nodeName !== 'button') {

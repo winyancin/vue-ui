@@ -69,10 +69,10 @@ export default {
   },
 
   created() {
-    console.log("col created");
+    // console.log("col created");
   },
   mounted() {
-    console.log("col mounted");
+    // console.log("col mounted");
   },
 };
 </script>

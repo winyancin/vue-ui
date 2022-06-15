@@ -42,11 +42,12 @@ new Vue({
   data: {
     loading1: false,
     loading2: false,
+    selectedTab: 'sports'
   },
 
   methods: {
     inputChange($event) {
-      console.log($event);
+      // console.log($event);
     },
 
     showToast(position) {
@@ -62,7 +63,7 @@ new Vue({
       });
     },
     yyy() {
-      console.log('yyy');
+
     }
   },
 });

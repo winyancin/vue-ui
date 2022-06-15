@@ -11,8 +11,9 @@ export default {
   name: "d-tabs",
   props: {
     selected: {
-      type: String
-    }
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -25,8 +26,17 @@ export default {
     };
   },
   mounted() {
-    this.eventBus.$emit('update:selected', this.selected)
-  }
+    this.$children.forEach((vm) => {
+      if (vm.$options.name === "d-tabs-head") {
+        vm.$children.forEach((child) => {
+          console.log(child.$options.name);
+          if (child.$options.name === "d-tabs-item" && this.selected === child.name) {
+            this.eventBus.$emit("update:selected", this.selected, child);
+          }
+        });
+      }
+    });
+  },
 };
 </script>
 
