@@ -30,6 +30,33 @@
 </style>
 <body>
 <div id='app'>
+    <d-tabs :selected.sync="selectedTab" @update:selected="yyy">
+        <d-tabs-head @update:selected="yyy">
+            <template slot="actions">
+                <button>设置</button>
+            </template>
+            <d-tabs-item name="woman">
+                <d-icon name="settings"></d-icon>美女
+            </d-tabs-item>
+            <d-tabs-item name="finance" disabled>
+            财经
+            </d-tabs-item>
+            <d-tabs-item name="sports">
+            体育
+            </d-tabs-item>
+        </d-tabs-head>
+        <d-tabs-body>
+            <d-tabs-pane name="woman">
+            美女相关资讯
+            </d-tabs-pane>
+            <d-tabs-pane name="finance">
+            财经相关资讯
+            </d-tabs-pane>
+            <d-tabs-pane name="sports">
+            体育相关资讯
+            </d-tabs-pane>
+        </d-tabs-body>
+    </d-tabs>
     <div class="box">
         <d-button @click="showToast('top')">toast top</d-button>
         <d-button @click="showToast('bottom')">toast bottom</d-button>

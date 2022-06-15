@@ -12,6 +12,11 @@ import Sider from "./sider";
 import Content from "./content";
 import Toast from "./toast";
 import toastPlugin from "./plugin";
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsBody from './tabs-body'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
 
 Vue.component("d-button", Button);
 Vue.component("d-icon", Icon);
@@ -25,6 +30,11 @@ Vue.component("d-header", Header);
 Vue.component("d-sider", Sider);
 Vue.component("d-content", Content);
 Vue.component("d-toast", Toast);
+Vue.component("d-tabs", Tabs);
+Vue.component("d-tabs-head", TabsHead);
+Vue.component("d-tabs-body", TabsBody);
+Vue.component("d-tabs-item", TabsItem);
+Vue.component("d-tabs-pane", TabsPane);
 Vue.use(toastPlugin);
 
 new Vue({
@@ -51,5 +61,8 @@ new Vue({
         autoClose: false
       });
     },
+    yyy() {
+      console.log('yyy');
+    }
   },
 });
