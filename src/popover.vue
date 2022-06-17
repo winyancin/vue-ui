@@ -1,5 +1,5 @@
 <template>
-  <div class="popover" @click="onClick" ref="popover">
+  <div class="popover" ref="popover">
     <div ref="contentWrapper" class="content-wrapper" v-if="visible" :class="{ [`position-${position}`]: true }">
       <slot name="content"></slot>
     </div>
@@ -20,13 +20,30 @@ export default {
         return ["top", "bottom", "left", "right"].includes(value);
       },
     },
+    trigger: {
+      type: String,
+      default: 'click',
+      validator(value) {
+        return ['click', 'hover'].includes(value);
+      }
+    }
   },
   data() {
     return {
       visible: false,
     };
   },
-  mounted() {},
+  computed: {
+
+  },
+  mounted() {
+    if (this.trigger === 'click') {
+      this.$refs.popover.addEventListener('click', this.onClick);
+    } else if (this.trigger === 'hover') {
+      this.$refs.popover.addEventListener('mouseenter', this.open);
+      this.$refs.popover.addEventListener('mouseleave', this.close);
+    }
+  },
   methods: {
     onClickDocument(e) {
       if (!this.$refs.contentWrapper?.contains(e.target)) {
@@ -34,24 +51,30 @@ export default {
       }
     },
     positionContent() {
-      document.body.appendChild(this.$refs.contentWrapper);
       const { width, height, left, top } = this.$refs.triggerWrapper.getBoundingClientRect();
       const { height: height2 } = this.$refs.contentWrapper.getBoundingClientRect();
-      if (this.position === "top") {
-        this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
-        this.$refs.contentWrapper.style.top = `${top + window.scrollY}px`;
-      } else if (this.position === "bottom") {
-        this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
-        this.$refs.contentWrapper.style.top = `${top + height + window.scrollY}px`;
-      } else if (this.position === "left") {
-        this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
-        const offsetY = (height2 - height) / 2;
-        this.$refs.contentWrapper.style.top = `${top + window.scrollY - offsetY}px`;
-      } else if (this.position === "right") {
-        this.$refs.contentWrapper.style.left = `${left + window.scrollX + width}px`;
-        const offsetY = (height2 - height) / 2;
-        this.$refs.contentWrapper.style.top = `${top + window.scrollY - offsetY}px`;
-      }
+      document.body.appendChild(this.$refs.contentWrapper);
+
+      const positions = {
+        top: {
+          left: left + window.scrollX,
+          top: top + window.scrollY,
+        },
+        bottom: {
+          left: left + window.scrollX,
+          top: top + height + window.scrollY,
+        },
+        left: {
+          left: left + window.scrollX,
+          top: top + window.scrollY,
+        },
+        right: {
+          left: left + window.scrollX + width,
+          top: top + window.scrollY,
+        },
+      };
+      this.$refs.contentWrapper.style.left = positions[this.position].left + "px";
+      this.$refs.contentWrapper.style.top = positions[this.position].top + "px";
     },
     open() {
       this.visible = true;
@@ -108,10 +131,12 @@ export default {
   &.position-top {
     transform: translateY(calc(-100% - 10px));
     &:before {
+      border-bottom: none;
       border-top-color: black;
       top: 100%;
     }
     &:after {
+      border-bottom: none;
       border-top-color: white;
       top: calc(100% - 1px);
     }
@@ -120,9 +145,11 @@ export default {
     transform: translateY(10px);
     &:before {
       border-bottom-color: black;
+      border-top: none;
       bottom: 100%;
     }
     &:after {
+      border-top: none;
       border-bottom-color: white;
       bottom: calc(100% - 1px);
     }
@@ -131,10 +158,12 @@ export default {
   &.position-left {
     transform: translateX(calc(-100% - 10px));
     &:before {
+      border-right: none;
       border-left-color: black;
       left: 100%;
     }
     &:after {
+      border-right: none;
       transform: translateY(calc(-100% + 1px));
       border-left-color: white;
       left: calc(100% - 1px);
@@ -144,10 +173,12 @@ export default {
   &.position-right {
     transform: translateX(10px);
     &:before {
+      border-left: none;
       border-right-color: black;
       right: 100%;
     }
     &:after {
+      border-left: none;
       transform: translateY(calc(-100% + 1px));
       border-right-color: white;
       right: calc(100% - 1px);
