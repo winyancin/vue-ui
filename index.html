@@ -26,8 +26,36 @@
     }
 </style>
 <body>
-<div id='app'>
-    <d-tabs :selected.sync="selectedTab" @update:selected="yyy">
+<div id='app' :style="{paddingLeft: '100px', paddingTop: '100px', border: '1px solid red'}">
+    <div style="border: 1px solid green; padding: 5px; overflow: hidden;" @click="yyy">
+        <d-popover>
+            <template slot="content">
+                <div>popover</div>
+            </template>
+            <d-button>position-top</d-button>
+        </d-popover>
+    
+        <d-popover position="bottom">
+            <template slot="content">
+                <div>popover</div>
+            </template>
+            <d-button>position-bottom</d-button>
+        </d-popover>
+        <d-popover position="left">
+            <template slot="content">
+                <div>popover</div>
+            </template>
+            <d-button>position-bottom</d-button>
+        </d-popover>
+        <d-popover position="right">
+            <template slot="content">
+                <div>popover</div>
+            </template>
+            <d-button>position-bottom</d-button>
+        </d-popover>
+    </div>
+    
+    <!-- <d-tabs :selected.sync="selectedTab" @update:selected="yyy">
         <d-tabs-head @update:selected="yyy">
             <template slot="actions">
                 <button>设置</button>
@@ -59,14 +87,14 @@
         <d-button @click="showToast('bottom')">toast bottom</d-button>
         <d-button @click="showToast('middle')">toast middle</d-button>
     </div>
-    <!-- <d-layout>
+    <d-layout>
         <d-header class="demo">header</d-header>
         <d-layout>
             <d-sider>sider</d-sider>
             <d-content>content</d-content>
         </d-layout>
         <d-footer class="demo">footer</d-footer>
-    </d-layout> -->
+    </d-layout>
     <div style="border: 1px solid grey">
         <d-row>
            <d-col span="24" :ipad="{span:12}" :narrow-pc="{span:8}"></d-col>
@@ -92,7 +120,7 @@
             <d-button>按钮2</d-button>
             <d-button>按钮3</d-button>
         </d-button-group>
-    </section>
+    </section> -->
 
 </div>
 <script src="src/app.js"></script>
