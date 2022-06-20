@@ -26,11 +26,20 @@
     }
 </style>
 <body>
-<div id='app' :style="{paddingLeft: '100px', paddingTop: '100px', border: '1px solid red'}">
-    <div style="border: 1px solid green; padding: 5px; overflow: hidden;" @click="yyy">
+<div id='app' :style="{padding: '100px', border: '1px solid red'}">
+    <div>
+        <d-collapse :selected.sync="selected">
+            <d-collapse-item title="标题1" name="1">内容1</d-collapse-item>
+            <d-collapse-item title="标题2" name="2">内容2</d-collapse-item>
+            <d-collapse-item title="标题3" name="3">内容3</d-collapse-item>
+        </d-collapse>
+        {{selected}}
+    </div>
+    <!-- <div style="border: 1px solid green; padding: 5px; overflow: hidden;" @click="yyy">
         <d-popover>
-            <template slot="content">
+            <template slot="content" slot-scope="{close}">
                 <div>popover</div>
+                <d-button @click="close">关闭</d-button>
             </template>
             <d-button>position-top</d-button>
         </d-popover>
@@ -81,7 +90,7 @@
             <d-button>position-right hover</d-button>
         </d-popover>
     
-    </div>
+    </div> -->
     
     <!-- <d-tabs :selected.sync="selectedTab" @update:selected="yyy">
         <d-tabs-head @update:selected="yyy">
