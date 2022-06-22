@@ -12,14 +12,16 @@ import Sider from "./sider";
 import Content from "./content";
 import Toast from "./toast";
 import toastPlugin from "./plugin";
-import Tabs from './tabs'
-import TabsHead from './tabs-head'
-import TabsBody from './tabs-body'
-import TabsItem from './tabs-item'
-import TabsPane from './tabs-pane'
-import Popover from './popover';
-import Collapse from './collapse';
-import CollapseItem from './collapse-item';
+import Tabs from "./tabs";
+import TabsHead from "./tabs-head";
+import TabsBody from "./tabs-body";
+import TabsItem from "./tabs-item";
+import TabsPane from "./tabs-pane";
+import Popover from "./popover";
+import Collapse from "./collapse";
+import CollapseItem from "./collapse-item";
+import Slides from "./slides";
+import SlidesItem from "./slides-item";
 
 Vue.component("d-button", Button);
 Vue.component("d-icon", Icon);
@@ -38,9 +40,11 @@ Vue.component("d-tabs-head", TabsHead);
 Vue.component("d-tabs-body", TabsBody);
 Vue.component("d-tabs-item", TabsItem);
 Vue.component("d-tabs-pane", TabsPane);
-Vue.component('d-popover', Popover);
-Vue.component('d-collapse', Collapse);
-Vue.component('d-collapse-item', CollapseItem);
+Vue.component("d-popover", Popover);
+Vue.component("d-collapse", Collapse);
+Vue.component("d-collapse-item", CollapseItem);
+Vue.component("d-slides", Slides);
+Vue.component("d-slides-item", SlidesItem);
 Vue.use(toastPlugin);
 
 new Vue({
@@ -48,7 +52,7 @@ new Vue({
   data: {
     loading1: false,
     loading2: false,
-    selected: ['3']
+    selectedSlider: undefined,
   },
 
   methods: {
@@ -57,7 +61,7 @@ new Vue({
     },
 
     showToast(position) {
-      this.$toast('内容'+Math.random(10), {
+      this.$toast("内容" + Math.random(10), {
         closeButton: {
           text: "关闭",
           cb: () => {
@@ -65,11 +69,11 @@ new Vue({
           },
         },
         position,
-        autoClose: false
+        autoClose: false,
       });
     },
     yyy() {
-console.log('yyy');
-    }
+      console.log("yyy");
+    },
   },
 });

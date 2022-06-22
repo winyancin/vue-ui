@@ -24,17 +24,36 @@
     .demo {
         height: 100px;
     }
+    .box {
+        width: 100%;
+        height: 150px;
+        border: 1px solid red;
+        background-color: #999;
+    }
 </style>
 <body>
-<div id='app' :style="{padding: '100px', border: '1px solid red'}">
+<div id='app'>
     <div>
+        <d-slides :selected.sync="selectedSlider">
+            <d-slides-item name="1">
+                <div class="box">1</div>
+            </d-slides-item>
+            <d-slides-item name="2">
+                <div class="box">2</div>
+            </d-slides-item>
+            <d-slides-item name="3">
+                <div class="box">3</div>
+            </d-slides-item>
+        </d-slides>
+    </div>
+    <!-- <div>
         <d-collapse :selected.sync="selected">
             <d-collapse-item title="标题1" name="1">内容1</d-collapse-item>
             <d-collapse-item title="标题2" name="2">内容2</d-collapse-item>
             <d-collapse-item title="标题3" name="3">内容3</d-collapse-item>
         </d-collapse>
         {{selected}}
-    </div>
+    </div> -->
     <!-- <div style="border: 1px solid green; padding: 5px; overflow: hidden;" @click="yyy">
         <d-popover>
             <template slot="content" slot-scope="{close}">
