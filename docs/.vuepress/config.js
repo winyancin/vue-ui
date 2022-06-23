@@ -1,6 +1,7 @@
 const { defaultTheme } = require("@vuepress/theme-default");
 
 module.exports = {
+  base: "vue-ui",
   lang: "zh-CN",
   title: "你好， VuePress ！",
   description: "这是我的第dadasdas一个 VuePress 站点",
