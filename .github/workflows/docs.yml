@@ -41,14 +41,6 @@ jobs:
       - name: Build VuePress site
         run: yarn docs:build
 
-      # 查看 workflow 的文档来获取更多信息
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: docs/.vuepress/dist # The folder the action should deploy.
-          token: ${{ secrets.SECRETE_ACTIONS }}
-
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
