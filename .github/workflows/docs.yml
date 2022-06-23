@@ -45,7 +45,7 @@ jobs:
 
       # 查看 workflow 的文档来获取更多信息
       - name: Deploy to GitHub Pages
-        uses: vexh/vue-ui@v0.0.1
+        uses: vexh/vue-ui@main
         with:
           # 部署到 gh-pages 分支
           target_branch: gh-pages
