@@ -49,15 +49,17 @@ Vue.use(toastPlugin);
 
 new Vue({
   el: "#app",
-  data: {
-    loading1: false,
-    loading2: false,
-    selectedSlider: undefined,
+  data: function () {
+    return {
+      loading1: false,
+      loading2: false,
+      selectedSlider: undefined,
+    };
   },
 
   methods: {
-    inputChange($event) {
-      // console.log($event);
+    inputChange() {
+
     },
 
     showToast(position) {
