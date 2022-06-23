@@ -35,7 +35,7 @@ module.exports = {
           // SidebarItem
           {
             text: "按钮",
-            link: "/install/README.md",
+            link: "/components/button.md",
             // children: [],
           },
           // 字符串 - 页面文件路径
