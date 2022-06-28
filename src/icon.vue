@@ -1,14 +1,20 @@
 <template>
   <svg v-if="name" class="icon">
-    <use :xlink:href=`#icon-${name}`></use>
+    <use :href='xlinkHref'></use>
   </svg>
 </template>
 
 <script>
+import "./svg.js";
 export default {
-  name: "icon",
+  name: "d-icon",
   props: {
     name: String
+  },
+  data() {
+    return {
+      xlinkHref: `#i-${this.name}`
+    }
   }
 }
 </script>
