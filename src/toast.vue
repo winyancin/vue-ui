@@ -6,7 +6,9 @@
         <div v-if="enableHtml" v-html="$slots.default[0]"></div>
       </div>
       <div class="line" v-if="this.closeButton" ref="line"></div>
-      <div class="close" @click="onClose" v-if="this.closeButton">{{ this.closeButton.text }}</div>
+      <div class="close" @click="onClose" v-if="this.closeButton">
+        {{ this.closeButton.text }}
+      </div>
     </div>
   </div>
 </template>
@@ -19,8 +21,8 @@ export default {
       type: [Boolean, Number],
       default: true,
       validator(value) {
-        return typeof value === 'boolean' || typeof value === 'number'
-      }
+        return typeof value === "boolean" || typeof value === "number";
+      },
     },
     closeButton: Object,
     enableHtml: {
@@ -43,11 +45,13 @@ export default {
     },
   },
   mounted() {
+    console.log(111)
     this.excuteAutoClose();
     this.updateStyles();
   },
   methods: {
     excuteAutoClose() {
+      console.log(this.autoClose)
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
@@ -56,13 +60,16 @@ export default {
     },
     updateStyles() {
       this.$nextTick(() => {
-        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
+        if (this.$refs.line) {
+          this.$refs.line.style.height = `${
+            this.$refs.toast.getBoundingClientRect().height
+          }px`;
+        }
       });
     },
     close() {
       this.$el.remove();
       this.$emit("close");
-      this.$destroy();
     },
     onClose() {
       this.close();
@@ -130,7 +137,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   .toast {
     align-items: center;
-    
+
     display: flex;
     font-size: $font-size;
     background-color: $toast-bg;

@@ -10,6 +10,7 @@ export default {
   props: {
     gutter: {
       type: [Number, String],
+      required: false
     },
   },
   computed: {

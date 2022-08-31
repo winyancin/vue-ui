@@ -1,6 +1,6 @@
 <template>
   <div class="col" :class="colClass" :style="colStyle">
-    <div style="border: 1px solid green; height: 100px">
+    <div>
       <slot></slot>
     </div>
   </div>
@@ -9,8 +9,8 @@
 <script>
 let validator = (value) => {
   const keys = Object.keys(value);
-  const valid = true;
-  keys.forEach((key) => {
+  let valid = true;
+  keys?.forEach((key) => {
     if (!["span", "offset"].includes(key)) {
       valid = false;
     }

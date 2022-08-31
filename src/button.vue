@@ -10,6 +10,8 @@
 
 <script>
 export default {
+  name: "d-button",
+
   props: {
     loading: Boolean,
     icon: String,
