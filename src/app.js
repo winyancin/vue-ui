@@ -22,7 +22,7 @@
 // import CollapseItem from "./collapse-item";
 // import Slides from "./slides";
 // import SlidesItem from "./slides-item";
-
+//
 // Vue.component("d-button", Button);
 // Vue.component("d-icon", Icon);
 // Vue.component("d-button-group", ButtonGroup);
@@ -46,7 +46,7 @@
 // Vue.component("d-slides", Slides);
 // Vue.component("d-slides-item", SlidesItem);
 // Vue.use(toastPlugin);
-
+//
 // new Vue({
 //   el: "#app",
 //   data: function () {
@@ -56,12 +56,12 @@
 //       selectedSlider: undefined,
 //     };
 //   },
-
+//
 //   methods: {
 //     inputChange() {
-
+//
 //     },
-
+//
 //     showToast(position) {
 //       this.$toast("内容" + Math.random(10), {
 //         closeButton: {

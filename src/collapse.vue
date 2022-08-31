@@ -6,6 +6,7 @@
 
 <script>
 import Vue from "vue";
+import CollapseItem from "@/collapse-item";
 export default {
   name: "d-collapse",
   props: {

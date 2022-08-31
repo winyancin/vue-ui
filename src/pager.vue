@@ -3,7 +3,7 @@
     <span class="nav" :class="{ disabled: currentPage === 1 }" @click="onClickPage(currentPage - 1)">
       <d-icon name="left"></d-icon>
     </span>
-    <template v-for="page in pages" :key="page">
+    <template v-for="page in pages" >
       <template v-if="page === currentPage">
         <span class="d-pager-item active">{{ page }}</span>
       </template>

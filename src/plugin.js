@@ -1,40 +1,26 @@
-/* eslint-disable no-unused-vars */
-import Toast from "./toast";
-import { createApp, h } from "vue";
+import Toast from './toast';
 
-let toastInstance;
-
-function createToast({ app, message, propsData, onClose }) {
-  let root = document.createElement("div");
-  document.querySelector("body")?.appendChild(root);
-  const toast = h(
-    Toast,
-    {
-      ...propsData,
-    },
-    {
-      default: () => [message],
-    }
-  );
-  toastInstance = createApp(toast);
-  toastInstance.mount(root);
-  return toastInstance;
+function createToast({Vue, message, propsData, onClose}) {
+  let Constructor = Vue.extend(Toast)
+  let toast = new Constructor({ propsData })
+  toast.$slots.default = [message];
+  toast.$mount();
+  toast.$on('close', onClose)
+  document.body.appendChild(toast.$el);
+  return toast;
 }
 
+let toast;
+
 export default {
-  install: (app) => {
-    app.config.globalProperties.$toast = function (message, toastOptions) {
-      if (toastInstance) {
-        toastInstance.unmount();
+  install: (Vue, options) => {
+    Vue.prototype.$toast = function(message, toastOptions) {
+      if (toast) {
+        toast.close();
       }
-      toastInstance = createToast({
-        app,
-        message,
-        propsData: toastOptions,
-        onClose: () => {
-          toastInstance = null;
-        },
-      });
-    };
-  },
-};
+      toast = createToast({Vue, message, propsData: toastOptions, onClose: () => {
+        toast = null;
+      }})
+    }
+  }
+}

@@ -19,6 +19,7 @@ export default {
       default: false,
     },
     name: {
+      // eslint-disable-next-line vue/require-prop-type-constructor
       type: String | Number,
       require: true,
     },
@@ -32,7 +33,7 @@ export default {
     },
   },
   mounted() {
-    this.eventBus.$on("update:selected", (name, el) => {
+    this.eventBus.$on("update:selected", (name) => {
       this.active = name === this.name;
     });
   },
