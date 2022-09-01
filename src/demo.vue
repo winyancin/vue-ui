@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <h3>分页</h3>
     <Table></Table>
     <Pager v-model:current-page="currentPage" :total-pages="10" />
@@ -74,9 +74,11 @@
       </Popover>
     </div>
 
+  </div> -->
+
+  <div style="width: 500px;">
+    <Cascader :source="source" />
   </div>
-
-
 </template>
 
 <script>
@@ -93,18 +95,32 @@ import TabsItem from "@/tabs-item";
 import TabsPane from "@/tabs-pane";
 import TabsBody from "@/tabs-body";
 import Popover from "@/popover";
-
+import Cascader from "./cascader.vue";
 
 export default {
   name: "demo-app",
   components: {
     'd-button': Button, Tabs, TabsHead, TabsItem, TabsPane, TabsBody, Pager, Table, Row, Col,
-  Popover, CollapseItem, Collapse},
+  Popover, CollapseItem, Collapse, Cascader,},
   data() {
     return {
       selectedTab: "finance",
       currentPage: 1,
-      selected: ["1","2"]
+      selected: ["1","2"],
+      source: [
+        {
+          name: "标题1",
+          content: "内容1"
+        },
+        {
+          name: "标题2",
+          content: "内容2"
+        },
+        {
+          name: "标题3",
+          content: "内容3"
+        }
+      ]
     };
   },
   mounted() {
